@@ -1,0 +1,14 @@
+dependencies {
+    implementation Deps.kotlinStdlib
+
+    implementation Deps.androidCore
+    implementation Deps.androidLifecycle
+    implementation Deps.androidKtx
+    implementation Deps.appCompat
+    implementation Deps.material
+
+    implementation Deps.constraintLayout
+    implementation Deps.cardview
+
+    implementation Deps.mosby
+}

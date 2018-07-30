@@ -1,0 +1,5 @@
+<resources>
+  <string name="app_name">CleanArchitectureCoroutines</string>
+  <string name="weather">The weather in %1$s is </string>
+  <string name="temperature">%1$d F </string>
+</resources>

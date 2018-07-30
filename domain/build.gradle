@@ -1,0 +1,17 @@
+apply plugin: 'kotlin'
+
+kotlin {
+  experimental {
+    coroutines "enable"
+  }
+}
+
+dependencies {
+  implementation Deps.kotlinStdlib
+  implementation Deps.kotlinxCoroutinesCore
+
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"

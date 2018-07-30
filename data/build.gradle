@@ -1,0 +1,58 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+kotlin {
+  experimental {
+    coroutines "enable"
+  }
+}
+
+dependencies {
+  api project(':domain')
+
+  implementation Deps.kotlinStdlib
+  implementation Deps.androidKtx
+  implementation Deps.koinAndroid
+  implementation Deps.kotlinxCoroutinesCore
+  implementation Deps.kotlinxCoroutinesAndroid
+  implementation Deps.okHttp
+  implementation Deps.okHttpInteceptor
+  implementation Deps.retrofit
+  implementation Deps.retrofitConverterLoganSquare
+  implementation Deps.loganSquare
+  kapt Deps.loganSquareCompiler
+
+  apply from: "${sharedDependencies}/tests.gradle"
+}
+
+android {
+
+  compileSdkVersion Version.compileSdkVersion
+  buildToolsVersion Version.buildToolsVersion
+
+  defaultConfig {
+    minSdkVersion Version.minSdk
+    targetSdkVersion Version.targetSdk
+
+    versionCode 10000
+    versionName "1.0.0"
+
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+
+  dataBinding.enabled = true
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+}

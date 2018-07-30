@@ -1,0 +1,8 @@
+dependencies {
+    implementation Deps.rxJava
+    implementation Deps.rxKotlin
+    implementation Deps.rxAndroid
+    implementation Deps.rxBinding
+    implementation Deps.rxBindingKotlin
+    implementation Deps.rxBindingAppCompatV7
+}

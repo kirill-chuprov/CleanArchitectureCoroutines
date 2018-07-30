@@ -1,0 +1,59 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+kotlin {
+  experimental {
+    coroutines "enable"
+  }
+}
+
+android {
+
+  compileSdkVersion Version.compileSdkVersion
+  buildToolsVersion Version.buildToolsVersion
+
+  defaultConfig {
+    applicationId "com.example.user.myapplication"
+
+    minSdkVersion Version.minSdk
+    targetSdkVersion Version.targetSdk
+
+    versionCode 10000
+    versionName "1.0.0"
+
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+  }
+
+  dataBinding.enabled = true
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+}
+
+dependencies {
+  api project(':domain')
+  implementation project(':data')
+
+  implementation Deps.koinAndroid
+  implementation Deps.navController
+  implementation Deps.navControllerUi
+
+  implementation Deps.glide
+  kapt Deps.glideCompiler
+  implementation Deps.glideOkHttp3
+
+  implementation Deps.kotlinxCoroutinesCore
+  implementation Deps.kotlinxCoroutinesAndroid
+  implementation Deps.androidArchLifecycleExtensions
+  kapt Deps.androidArchLifecycleCompiler
+
+  apply from: "${sharedDependencies}/androidCommon.gradle"
+  apply from: "${sharedDependencies}/rxCommon.gradle"
+  apply from: "${sharedDependencies}/tests.gradle"
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
